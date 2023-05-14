@@ -478,7 +478,10 @@ GameObject:
   - component: {fileID: 1373091986}
   - component: {fileID: 1373091988}
   - component: {fileID: 1373091987}
+<<<<<<< HEAD
   - component: {fileID: 1373091989}
+=======
+>>>>>>> 6f95d30e0f2f9c505fcbe3b767eed867bf57b397
   m_Layer: 5
   m_Name: Green
   m_TagString: Untagged
@@ -545,6 +548,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373091985}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!114 &1373091989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGO: {fileID: 1901974430}
   textGO: {fileID: 1599295301}
+=======
+>>>>>>> 6f95d30e0f2f9c505fcbe3b767eed867bf57b397
 --- !u!1 &1599295301
 GameObject:
   m_ObjectHideFlags: 0

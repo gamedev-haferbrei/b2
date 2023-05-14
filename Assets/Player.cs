@@ -35,8 +35,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.C))
         {
+            if (fuel > 0) rb.AddForce(new Vector2(0, boostSpeed));
             SetFuel(fuel - fuelPenalty);
-            rb.AddForce(new Vector2(0, boostSpeed));    
         }
     }
 

@@ -26,6 +26,6 @@ public class FuelBar : MonoBehaviour
     void Update()
     {
         image.fillAmount = player.fuel;
-        text.text = player.fuel == 0 ? "Empty" : player.fuel.ToString();
+        text.text = player.fuel == 0 ? "Empty" : $"{(int)(player.fuel * 100)}%";
     }
 }

@@ -8,23 +8,41 @@ public class Player : MonoBehaviour
     int frameIndex = 0;
 
     SpriteRenderer spriteRenderer;
+    Rigidbody2D rb;
+
+    [SerializeField] float boostSpeed;
+    [SerializeField] float fuelPenalty;
 
     public float fuel;
+
+    public void SetFuel(float value)
+    {
+        fuel = Mathf.Clamp01(value);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating(nameof(FlipSprite), 0f, 0.1f);
+        
+        rb.velocity = new Vector2(2, 0);
+    }
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(2, 0);
+    void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.C))
+        {
+            SetFuel(fuel - fuelPenalty);
+            rb.AddForce(new Vector2(0, boostSpeed));    
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void FlipSprite()

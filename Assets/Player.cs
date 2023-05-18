@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] float boostSpeed;
     [SerializeField] float fuelPenalty;
+    [SerializeField] AudioManager audioManager;
 
     public float fuel;
 
@@ -30,19 +31,23 @@ public class Player : MonoBehaviour
         
         rb.velocity = new Vector2(2, 0);
     }
-
+    
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.C))
+        
+        if (Input.GetKey(KeyCode.Space))
         {
             if (fuel > 0) rb.AddForce(new Vector2(0, boostSpeed));
             SetFuel(fuel - fuelPenalty);
+            
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        audioManager.PlayAudio();
     }
 
     void FlipSprite()

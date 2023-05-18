@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2900446514094003011}
   - component: {fileID: 7799185203559789108}
   - component: {fileID: 7630361151266919347}
+  - component: {fileID: 3998600327333676222}
   m_Layer: 3
   m_Name: rockSnow
   m_TagString: Untagged
@@ -162,3 +163,17 @@ PolygonCollider2D:
       - {x: 0.53999996, y: -1.1949999}
       - {x: 0.53999996, y: -0.995}
       - {x: 0.51, y: -0.765}
+--- !u!114 &3998600327333676222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790264292302573560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90f916ededa2c644a96d6679e409ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crashSource: {fileID: 0}
+  SFXHit: {fileID: 8300000, guid: 392072988ecdfa04f851714e71978cde, type: 3}

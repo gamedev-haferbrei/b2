@@ -34,10 +34,10 @@ public class Player : MonoBehaviour
     
     void FixedUpdate()
     {
+
         //https://docs.unity3d.com/ScriptReference/Rigidbody.MovePosition.html
         Vector3 m_Input = new Vector3(1f, 0f, 0f);
         rb.MovePosition(transform.position + m_Input * Time.deltaTime);
-
 
         if (Input.GetKey(KeyCode.Space))
         {

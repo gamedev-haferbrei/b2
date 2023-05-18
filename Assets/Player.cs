@@ -34,13 +34,25 @@ public class Player : MonoBehaviour
     
     void FixedUpdate()
     {
+        //transform.rotation;
         
         if (Input.GetKey(KeyCode.Space))
         {
-            if (fuel > 0) rb.AddForce(new Vector2(0, boostSpeed));
+            if (fuel > 0)
+            {
+                rb.AddForce(new Vector2(0, boostSpeed));
+                transform.Rotate(new Vector3(0, 0, 25) * Time.deltaTime); // = Quaternion.Euler(0, 0, 25);
+            }
             SetFuel(fuel - fuelPenalty);
             
         }
+        else
+        {
+            //transform.rotation = Quaternion.identity;
+            transform.Rotate(new Vector3(0, 0, -10) * Time.deltaTime);
+            //transform.rotation = Quaternion.Euler(0, 0, -10);
+        }
+        
 
     }
 

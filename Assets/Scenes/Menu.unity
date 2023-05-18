@@ -201,9 +201,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 336314648}
     m_Modifications:
+    - target: {fileID: 5531020384090442618, guid: cb771896af66e704885f2df1360fb432, type: 3}
+      propertyPath: scene
+      value: Level 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7144838536355317208, guid: cb771896af66e704885f2df1360fb432, type: 3}
       propertyPath: m_Name
-      value: LevelButton (1)
+      value: LevelButton 2
       objectReference: {fileID: 0}
     - target: {fileID: 7144838536355317223, guid: cb771896af66e704885f2df1360fb432, type: 3}
       propertyPath: m_Pivot.x

@@ -34,23 +34,26 @@ public class Player : MonoBehaviour
     
     void FixedUpdate()
     {
-        //transform.rotation;
-        
+        //https://docs.unity3d.com/ScriptReference/Rigidbody.MovePosition.html
+        Vector3 m_Input = new Vector3(1f, 0f, 0f);
+        rb.MovePosition(transform.position + m_Input * Time.deltaTime);
+
+
         if (Input.GetKey(KeyCode.Space))
         {
             if (fuel > 0)
             {
                 rb.AddForce(new Vector2(0, boostSpeed));
-                transform.Rotate(new Vector3(0, 0, 25) * Time.deltaTime); // = Quaternion.Euler(0, 0, 25);
+               // transform.Rotate(new Vector3(0, 0, 25));
+                transform.rotation = Quaternion.Euler(0, 0, 25);
             }
             SetFuel(fuel - fuelPenalty);
             
         }
         else
         {
-            //transform.rotation = Quaternion.identity;
-            transform.Rotate(new Vector3(0, 0, -10) * Time.deltaTime);
-            //transform.rotation = Quaternion.Euler(0, 0, -10);
+            //transform.Rotate(new Vector3(0, 0, -10));
+            transform.rotation = Quaternion.Euler(0, 0, -10);
         }
         
 

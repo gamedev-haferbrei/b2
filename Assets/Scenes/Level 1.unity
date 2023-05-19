@@ -889,7 +889,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8e9f68b859ff7db4d9893c684f671f05, type: 3}
   - {fileID: 21300000, guid: 672e704d498687340b02a2d7b0927bf3, type: 3}
   boostSpeed: 30
-  fuelPenalty: 0.01
+  fuelPenalty: 0.005
   audioManager: {fileID: 1225046134}
   fuel: 1
 --- !u!212 &879784463
@@ -2405,7 +2405,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

@@ -28,16 +28,15 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating(nameof(FlipSprite), 0f, 0.1f);
-        
-        rb.velocity = new Vector2(2, 0);
     }
     
     void FixedUpdate()
     {
 
         //https://docs.unity3d.com/ScriptReference/Rigidbody.MovePosition.html
-        Vector3 m_Input = new Vector3(1f, 0f, 0f);
-        rb.MovePosition(transform.position + m_Input * Time.deltaTime);
+        //Vector3 m_Input = new Vector3(1f, 0f, 0f);
+        //rb.MovePosition(transform.position + m_Input * Time.deltaTime);
+        rb.AddForce(new Vector2(10, -boostSpeed / 2));
 
         if (Input.GetKey(KeyCode.Space))
         {

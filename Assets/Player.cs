@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioManager audioManager;
     [SerializeField] AudioSource crashSource;
     [SerializeField] AudioClip SFXHit;
+    //[SerializeField] GameObject star;
 
     public float fuel;
 

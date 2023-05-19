@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StarScript : MonoBehaviour
 {
-    [SerializeField] GameObject star;
+   // [SerializeField] GameObject star;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +17,13 @@ public class StarScript : MonoBehaviour
     {
         
     }
-    public void StarHit()
+    void OnTriggerEnter2D(Collider2D col)
     {
-       /* if (Player.transform.position == star.transform.position)
-        {
 
-        }*/
+
+        // col.gameObject.GetComponent<Player>().SetFuel(col.fuel + 30);
+        //Destroy(col.gameObject);
+        Debug.Log("trigger happened");
+        
     }
 }

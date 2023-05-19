@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] float boostSpeed;
     [SerializeField] float fuelPenalty;
     [SerializeField] AudioManager audioManager;
+    [SerializeField] AudioSource crashSource;
+    [SerializeField] AudioClip SFXHit;
 
     public float fuel;
 
@@ -56,6 +58,12 @@ public class Player : MonoBehaviour
         }
         
 
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        crashSource.PlayOneShot(SFXHit, 0.75f);
+        //Player must fall here
     }
 
     // Update is called once per frame

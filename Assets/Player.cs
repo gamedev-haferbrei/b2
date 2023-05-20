@@ -15,7 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField] AudioManager audioManager;
     [SerializeField] AudioSource crashSource;
     [SerializeField] AudioClip SFXHit;
-    
+    [SerializeField] AudioSource item;
+    [SerializeField] AudioClip SFXItem;
+
     //[SerializeField] GameObject star;
 
     public float fuel;
@@ -66,9 +68,38 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         crashSource.PlayOneShot(SFXHit, 0.75f);
+        rb.gravityScale = 5;
+        
         //Player must fall here
     }
     
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "star_gold (1)")
+        {
+            item.PlayOneShot(SFXItem, 1.0f);
+        }
+        if (col.gameObject.name == "star_gold")
+        {
+            item.PlayOneShot(SFXItem, 1.0f);
+        }
+        if (col.gameObject.name == "star_gold (2)")
+        {
+            item.PlayOneShot(SFXItem, 1.0f);
+        }
+        if (col.gameObject.name == "star_gold (3)")
+        {
+            item.PlayOneShot(SFXItem, 1.0f);
+        }
+        if (col.gameObject.name == "star_gold (4)")
+        {
+            item.PlayOneShot(SFXItem, 1.0f);
+        }
+        if (col.gameObject.name == "star_gold (5)")
+        {
+            item.PlayOneShot(SFXItem, 1.0f);
+        }
+    }
 
     // Update is called once per frame
     void Update()

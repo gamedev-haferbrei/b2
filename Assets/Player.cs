@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioManager audioManager;
     [SerializeField] AudioSource crashSource;
     [SerializeField] AudioClip SFXHit;
+    
     //[SerializeField] GameObject star;
 
     public float fuel;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.tag = "Player";
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour
         crashSource.PlayOneShot(SFXHit, 0.75f);
         //Player must fall here
     }
+    
 
     // Update is called once per frame
     void Update()

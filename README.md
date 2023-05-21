@@ -9,5 +9,7 @@
   * Obstacles: Goat & Giraffe
   * Level: Snow
 * Rudolfs Pogodins (108021225460)
+  * Obstacles: Falling Plane & Moving rocks
+  * Level: Mountains
 
 Have fun :D

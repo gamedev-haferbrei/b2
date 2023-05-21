@@ -49,35 +49,42 @@ public class Player : MonoBehaviour
         //https://docs.unity3d.com/ScriptReference/Rigidbody.MovePosition.html
         //Vector3 m_Input = new Vector3(1f, 0f, 0f);
         //rb.MovePosition(transform.position + m_Input * Time.deltaTime);
-        rb.AddForce(new Vector2(10, -boostSpeed / 2));
-
-        if (Input.GetKey(KeyCode.Space) & isAlive)
+        if (isAlive)
         {
-            if (fuel > 0)
+            rb.AddForce(new Vector2(10, -boostSpeed / 2));
+            if (Input.GetKey(KeyCode.Space))
             {
-                rb.AddForce(new Vector2(0, boostSpeed));
-               // transform.Rotate(new Vector3(0, 0, 25));
-                transform.rotation = Quaternion.Euler(0, 0, 25);
+                if (fuel > 0)
+                {
+                    rb.AddForce(new Vector2(0, boostSpeed));
+                    // transform.Rotate(new Vector3(0, 0, 25));
+                    transform.rotation = Quaternion.Euler(0, 0, 25);
+                }
+                SetFuel(fuel - fuelPenalty);
+
             }
-            SetFuel(fuel - fuelPenalty);
-            
-        }
-        else if (isAlive)
-        {
-            //transform.Rotate(new Vector3(0, 0, -10));
-            transform.rotation = Quaternion.Euler(0, 0, -10);
-        }
-        else if (Input.GetKey(KeyCode.Space) & timer >= 2)
-        {
-            isTimer = false;
-            restart.gameObject.SetActive(false);
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            else
+            {
+                //transform.Rotate(new Vector3(0, 0, -10));
+                transform.rotation = Quaternion.Euler(0, 0, -10);
+            }
         }
         else
-        {
-            //transform.Rotate(new Vector3(0, 0, -10));
-            transform.rotation = Quaternion.Euler(0, 0, -10);
+        {   
+            
+            rb.AddForce(new Vector2(rb.velocity.x, rb.velocity.y));
+            if (Input.GetKey(KeyCode.Space) & timer >= 2)
+            {
+                isTimer = false;
+                restart.gameObject.SetActive(false);
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
+            }
+            else
+            {
+                //transform.Rotate(new Vector3(0, 0, -10));
+                transform.rotation = Quaternion.Euler(0, 0, -10);
+            }
         }
 
 
@@ -85,17 +92,22 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (isAlive) crashSource.PlayOneShot(SFXHit, 0.75f);
-        //rb.gravityScale = 5;
-        rb.mass = 0.3f;
-        isAlive = false;
-        isTimer = true;
-        //rb.sharedMaterial.bounciness = 0.8f;
+        if (!col.gameObject.CompareTag("Ceiling"))
+        {
+            if (isAlive)
+            {
+                crashSource.PlayOneShot(SFXHit, 0.75f);
+                rb.gravityScale = 1;
+                rb.mass = 0.3f;
+                isAlive = false;
+                isTimer = true;
+                rb.gameObject.layer = 8;
+                gameObject.GetComponentInChildren<CapsuleCollider2D>().gameObject.layer = 8;
+            }
 
-        rb.gameObject.layer = 8;
-        gameObject.GetComponentInChildren<CapsuleCollider2D>().gameObject.layer = 8;
-        //Player must fall here
+            rb.AddForce(new Vector2(Random.Range(-4, 4), 3), ForceMode2D.Impulse);
 
+        }
     }
 
     // Update is called once per frame

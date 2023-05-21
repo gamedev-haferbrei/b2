@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Star
   - Level End Trigger
+  - Ceiling
   layers:
   - Default
   - TransparentFX

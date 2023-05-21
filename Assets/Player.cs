@@ -72,34 +72,6 @@ public class Player : MonoBehaviour
         
         //Player must fall here
     }
-    
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.name == "star_gold (1)")
-        {
-            item.PlayOneShot(SFXItem, 1.0f);
-        }
-        if (col.gameObject.name == "star_gold")
-        {
-            item.PlayOneShot(SFXItem, 1.0f);
-        }
-        if (col.gameObject.name == "star_gold (2)")
-        {
-            item.PlayOneShot(SFXItem, 1.0f);
-        }
-        if (col.gameObject.name == "star_gold (3)")
-        {
-            item.PlayOneShot(SFXItem, 1.0f);
-        }
-        if (col.gameObject.name == "star_gold (4)")
-        {
-            item.PlayOneShot(SFXItem, 1.0f);
-        }
-        if (col.gameObject.name == "star_gold (5)")
-        {
-            item.PlayOneShot(SFXItem, 1.0f);
-        }
-    }
 
     // Update is called once per frame
     void Update()
@@ -112,5 +84,25 @@ public class Player : MonoBehaviour
         frameIndex++;
         frameIndex %= frames.Length;
         spriteRenderer.sprite = frames[frameIndex];
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        //colType = col.GetType;
+        // playerType = player.GetType;
+        //Debug.Log(col.gameObject.name);
+        if (col.gameObject.CompareTag("Star"))
+        {
+            item.PlayOneShot(SFXItem, 1.0f);
+            SetFuel(fuel + 30);
+            Destroy(col.gameObject);
+        }
+
+
+        // col.gameObject.GetComponent<Player>().SetFuel(col.fuel + 30);
+        //Destroy(col.gameObject);
+        //Player player = col.gameObject.GetComponent<Player>();
+
+
     }
 }

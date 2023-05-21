@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8490251078038655528}
   m_Layer: 0
   m_Name: star_gold
-  m_TagString: Untagged
+  m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,9 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979004ba7090e834d89f2a038e5cc9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4504074244527980806, guid: ce034fc0a5f4d5b499506572abe8cccc, type: 3}
-  item: {fileID: 6124762815285700576, guid: 092904cac4593bf49970967e9dadfcf3, type: 3}
-  SFXItem: {fileID: 8300000, guid: ef494ee1565118d43baf29a191d68104, type: 3}
 --- !u!50 &6034156520352804105
 Rigidbody2D:
   serializedVersion: 4

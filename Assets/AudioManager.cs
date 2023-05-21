@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     // [SpecializeField] AudioSource source;
     [SerializeField] public AudioSource source;
     [SerializeField] public AudioClip jumpSound;
+    [SerializeField] public Player player;
    // [SerializeField] public AudioSource background;
     // Start is called before the first frame update
     // [SerializeField] GameObject audioManagerGO;
@@ -17,7 +18,7 @@ public class AudioManager : MonoBehaviour
     public void PlayAudio()
     {
         // source.clip = BellSound;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) & player.isAlive)
         {
             source.PlayOneShot(jumpSound, 0.75f);
         }

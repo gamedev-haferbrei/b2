@@ -2196,6 +2196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 179321540339488897, guid: 4445851d0dd8f574abd388d945c6531a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 879784462}
     - target: {fileID: 1257484695033802746, guid: 4445851d0dd8f574abd388d945c6531a, type: 3}
       propertyPath: m_Name
       value: Common Elements

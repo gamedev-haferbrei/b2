@@ -18,10 +18,12 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip SFXHit;
     [SerializeField] AudioSource item;
     [SerializeField] AudioClip SFXItem;
-
     //[SerializeField] GameObject star;
 
     public float fuel;
+    public bool isAlive;
+    public float timer;
+    public bool isTimer = false;
 
     public void SetFuel(float value)
     {
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
         gameObject.tag = "Player";
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        isAlive = true;
 
         InvokeRepeating(nameof(FlipSprite), 0f, 0.1f);
     }
@@ -46,7 +49,7 @@ public class Player : MonoBehaviour
         //rb.MovePosition(transform.position + m_Input * Time.deltaTime);
         rb.AddForce(new Vector2(10, -boostSpeed / 2));
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) & isAlive)
         {
             if (fuel > 0)
             {
@@ -57,27 +60,46 @@ public class Player : MonoBehaviour
             SetFuel(fuel - fuelPenalty);
             
         }
+        else if (isAlive)
+        {
+            //transform.Rotate(new Vector3(0, 0, -10));
+            transform.rotation = Quaternion.Euler(0, 0, -10);
+        }
+        else if (Input.GetKey(KeyCode.Space) & timer >= 3)
+        {
+            isTimer = false;
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
         else
         {
             //transform.Rotate(new Vector3(0, 0, -10));
             transform.rotation = Quaternion.Euler(0, 0, -10);
         }
-        
+
 
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        crashSource.PlayOneShot(SFXHit, 0.75f);
-        rb.gravityScale = 5;
-        
+        if (isAlive) crashSource.PlayOneShot(SFXHit, 0.75f);
+        //rb.gravityScale = 5;
+        rb.mass = 0.3f;
+        isAlive = false;
+        isTimer = true;
+        //rb.sharedMaterial.bounciness = 0.8f;
+
+        rb.gameObject.layer = 8;
+        gameObject.GetComponentInChildren<CapsuleCollider2D>().gameObject.layer = 8;
         //Player must fall here
+
     }
 
     // Update is called once per frame
     void Update()
     {
         audioManager.PlayAudio();
+        if (isTimer) timer += Time.deltaTime;
     }
 
     void FlipSprite()

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 4859829566359312081}
   jumpSound: {fileID: 8300000, guid: de768cb6185db364b84173d03deb7ee9, type: 3}
+  player: {fileID: 3546635525352531694}
 --- !u!1 &227003044292529136
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +453,9 @@ MonoBehaviour:
   item: {fileID: 6219166396924749486}
   SFXItem: {fileID: 8300000, guid: ef494ee1565118d43baf29a191d68104, type: 3}
   fuel: 1
+  isAlive: 0
+  timer: 0
+  isTimer: 0
 --- !u!50 &5214987470650872858
 Rigidbody2D:
   serializedVersion: 4
@@ -468,7 +472,7 @@ Rigidbody2D:
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30637e7bff3598f4da9e0b278dab0e0b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

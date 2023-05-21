@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip SFXHit;
     [SerializeField] AudioSource item;
     [SerializeField] AudioClip SFXItem;
+    [SerializeField] TextMeshProUGUI restart;
     //[SerializeField] GameObject star;
 
     public float fuel;
@@ -65,9 +67,10 @@ public class Player : MonoBehaviour
             //transform.Rotate(new Vector3(0, 0, -10));
             transform.rotation = Quaternion.Euler(0, 0, -10);
         }
-        else if (Input.GetKey(KeyCode.Space) & timer >= 3)
+        else if (Input.GetKey(KeyCode.Space) & timer >= 2)
         {
             isTimer = false;
+            restart.gameObject.SetActive(false);
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
@@ -100,6 +103,7 @@ public class Player : MonoBehaviour
     {
         audioManager.PlayAudio();
         if (isTimer) timer += Time.deltaTime;
+        if (timer>=2) restart.gameObject.SetActive(true);
     }
 
     void FlipSprite()

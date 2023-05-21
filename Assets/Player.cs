@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -96,6 +97,9 @@ public class Player : MonoBehaviour
             item.PlayOneShot(SFXItem, 1.0f);
             SetFuel(fuel + 30);
             Destroy(col.gameObject);
+        } else if (col.gameObject.CompareTag("Level End Trigger"))
+        {
+            SceneManager.LoadScene("Menu");
         }
 
 
